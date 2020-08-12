@@ -35,7 +35,7 @@ else:
     with open(file_name+'.txt', 'r', encoding="utf8") as f:
         source_code = f.read()
 
-    # convert txt to html
+    # convert txt to bs object
     soup = BeautifulSoup(source_code, features="lxml")
 
     usefuls = soup.findAll("td", {"rowspan": "1", 'class': 'name'})
@@ -45,12 +45,11 @@ else:
         pet_url = parse.urljoin(base_url, link)
         print(pet_url)
 
-        # create a new Chrome session and get source code
-        driver = webdriver.Chrome()
-        driver.implicitly_wait(3000)
-        driver.get(pet_url)
-
-        quit()
+        # # create a new Chrome session and get source code
+        # driver = webdriver.Chrome()
+        # driver.implicitly_wait(3000)
+        # driver.get(pet_url)
+        # driver.close()
 
     # # get data from table, (https://towardsdatascience.com/scrape-tabular-data-with-python-b1dd1aeadfad)
     # tables = soup.find_all("table")

@@ -33,7 +33,7 @@ else:
     with open('text.txt', 'r', encoding="utf8") as f:
         source_code = f.read()
 
-# convert txt to html
+# convert txt to bs object
 soup = BeautifulSoup(source_code, features="lxml")
 
 # get data from table, (https://towardsdatascience.com/scrape-tabular-data-with-python-b1dd1aeadfad)
@@ -47,7 +47,7 @@ df = pd.DataFrame(tab_data)
 df.columns = df.iloc[0, :]
 df.drop(index=0, inplace=True)
 # save and visualise DataFrame as html file (https://stackoverflow.com/questions/18528533/pretty-printing-a-pandas-dataframe)
-df.to_html('temp.html')
+# df.to_html('temp.html')
 
 # for tag in soup.find_all('span', {"class": "money-gold"}):
 #     print(tag.string)
